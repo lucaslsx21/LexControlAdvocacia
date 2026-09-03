@@ -117,6 +117,9 @@ Os testes verificam unicidade do processo, atualização de estoque e bloqueio d
 - A chave da API fica somente no servidor.
 - Para produção, use PostgreSQL, HTTPS, permissões por perfil, trilha de auditoria e tarefas em segundo plano.
 
+## 10 Link
+- https://lexcontroladvocacia-2.onrender.com/
+
 ## 10. Produção e segurança
 
 Antes de publicar: mova `SECRET_KEY` para variável de ambiente; defina `DEBUG=False`; configure `ALLOWED_HOSTS`; use PostgreSQL; ative HTTPS; implemente backups e perfis de permissão. Como o sistema pode armazenar dados jurídicos e pessoais, aplique controle de acesso, registro de auditoria, política de retenção e medidas compatíveis com a LGPD. O projeto é uma base funcional e deve passar por revisão técnica e jurídica antes do uso real.
