@@ -1,2 +1,753 @@
-.btn.import{background:#0f8a63;border-color:#0f8a63;color:#fff}.btn.danger-btn{background:#df3348;border-color:#df3348;color:#fff}.icon-btn.danger{background:#ffe6e9;color:#c9253d}.alert{padding:13px 16px;background:#e4f8ed;color:#12683f;border:1px solid #b9e8ce;border-radius:8px;margin-bottom:18px}.confirm-card{max-width:620px;margin:70px auto;text-align:center}.warning-icon{font-size:48px;color:#df3348}.warning-text{background:#fff4e5;color:#835500;padding:12px;border-radius:7px}.upload-card .field{margin:20px 0}.drop-icon{font-size:55px;text-align:center;color:#0f8a63;padding:10px}.check-list{list-style:none;padding:0}.check-list li{padding:9px 0;border-bottom:1px solid #edf0f3}.check-list li:before{content:'✓';color:#0f8a63;font-weight:bold;margin-right:10px}.upload-card input[type=file]{padding:20px;border:2px dashed #b8c8d9;background:#f8fbff}
-.btn.ia{background:linear-gradient(135deg,#6842d8,#1769e8);border-color:#6842d8;color:#fff}.aviso-ia{display:flex;align-items:flex-start;gap:16px;padding:18px;margin-bottom:20px;border:1px solid #d8cef9;border-radius:10px;background:#f5f1ff;color:#49328f}.aviso-ia>i{margin-top:4px;font-size:25px}.aviso-ia p{margin:4px 0 0}.dados-peticao{display:flex;flex-wrap:wrap;gap:18px;padding-bottom:18px;margin-bottom:25px;border-bottom:1px solid #e1e7ef;color:#526074}.texto-peticao{max-width:900px;margin:auto;padding:30px;font-family:"Times New Roman",serif;font-size:17px;line-height:1.8;text-align:justify;color:#111}.editor-peticao{min-height:650px;font-family:"Times New Roman",serif;font-size:16px;line-height:1.6}.campo-revisao{margin-bottom:20px}
+/* =========================================================
+   LEXCONTROL - ESTILOS EXTRAS E RESPONSIVIDADE
+========================================================= */
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+.btn.import {
+    background: #0f8a63;
+    border-color: #0f8a63;
+    color: #fff;
+}
+
+.btn.danger-btn {
+    background: #df3348;
+    border-color: #df3348;
+    color: #fff;
+}
+
+.btn.ia {
+    background: linear-gradient(135deg, #6842d8, #1769e8);
+    border-color: #6842d8;
+    color: #fff;
+}
+
+.icon-btn.danger {
+    background: #ffe6e9;
+    color: #c9253d;
+}
+
+
+/* =========================================================
+   ALERTAS
+========================================================= */
+
+.alert {
+    padding: 13px 16px;
+    margin-bottom: 18px;
+
+    background: #e4f8ed;
+    color: #12683f;
+
+    border: 1px solid #b9e8ce;
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   CONFIRMAÇÃO / EXCLUSÃO
+========================================================= */
+
+.confirm-card {
+    max-width: 620px;
+    margin: 70px auto;
+    text-align: center;
+}
+
+.warning-icon {
+    font-size: 48px;
+    color: #df3348;
+}
+
+.warning-text {
+    padding: 12px;
+
+    background: #fff4e5;
+    color: #835500;
+
+    border-radius: 7px;
+}
+
+
+/* =========================================================
+   IMPORTAÇÃO DE PROCESSOS
+========================================================= */
+
+.upload-card .field {
+    margin: 20px 0;
+}
+
+.drop-icon {
+    padding: 10px;
+
+    font-size: 55px;
+    text-align: center;
+
+    color: #0f8a63;
+}
+
+.upload-card input[type="file"] {
+    width: 100%;
+    padding: 20px;
+
+    border: 2px dashed #b8c8d9;
+    background: #f8fbff;
+}
+
+
+/* =========================================================
+   LISTA DE VERIFICAÇÃO
+========================================================= */
+
+.check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.check-list li {
+    padding: 9px 0;
+    border-bottom: 1px solid #edf0f3;
+}
+
+.check-list li::before {
+    content: "✓";
+
+    margin-right: 10px;
+
+    color: #0f8a63;
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   ASSISTENTE DE PETIÇÕES COM IA
+========================================================= */
+
+.aviso-ia {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 16px;
+
+    padding: 18px;
+    margin-bottom: 20px;
+
+    border: 1px solid #d8cef9;
+    border-radius: 10px;
+
+    background: #f5f1ff;
+    color: #49328f;
+}
+
+.aviso-ia > i {
+    margin-top: 4px;
+    font-size: 25px;
+}
+
+.aviso-ia p {
+    margin: 4px 0 0;
+}
+
+.dados-peticao {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    padding-bottom: 18px;
+    margin-bottom: 25px;
+
+    border-bottom: 1px solid #e1e7ef;
+
+    color: #526074;
+}
+
+.texto-peticao {
+    width: 100%;
+    max-width: 900px;
+
+    margin: auto;
+    padding: 30px;
+
+    font-family: "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.8;
+
+    text-align: justify;
+
+    color: #111;
+}
+
+.editor-peticao {
+    width: 100%;
+    min-height: 650px;
+
+    font-family: "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.campo-revisao {
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   BASE RESPONSIVA
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+    display: block;
+
+    max-width: 100%;
+    height: auto;
+}
+
+input,
+select,
+textarea,
+button {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   CONTEÚDO PRINCIPAL
+========================================================= */
+
+main {
+    min-width: 0;
+}
+
+.content {
+    min-width: 0;
+}
+
+.main-content {
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   GRIDS
+========================================================= */
+
+.grid-2 {
+    display: grid;
+
+    grid-template-columns: repeat(
+        2,
+        minmax(0, 1fr)
+    );
+
+    gap: 24px;
+}
+
+
+/* =========================================================
+   PAINÉIS
+========================================================= */
+
+.panel {
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* =========================================================
+   CABEÇALHO DAS PÁGINAS
+========================================================= */
+
+.page-head {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+.page-head > div {
+    min-width: 0;
+}
+
+.page-head > div:last-child {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   FORMULÁRIOS
+========================================================= */
+
+.form-control {
+    width: 100%;
+    max-width: 100%;
+}
+
+textarea.form-control {
+    resize: vertical;
+}
+
+
+/* =========================================================
+   ÁREA DE AÇÕES
+========================================================= */
+
+.actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   TABELAS
+========================================================= */
+
+.table-responsive {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+/* =========================================================
+   MENU MOBILE
+========================================================= */
+
+.menu-toggle {
+    display: none;
+}
+
+.sidebar-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 900;
+
+    visibility: hidden;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    opacity: 0;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+
+/* =========================================================
+   NOTEBOOK / TELAS MÉDIAS
+   ATÉ 1200 PX
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .grid-2 {
+        gap: 18px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ATÉ 992 PX
+========================================================= */
+
+@media (max-width: 992px) {
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .page-head {
+        align-items: flex-start;
+    }
+
+    .page-head h1 {
+        font-size: 28px;
+    }
+
+    .import-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR / TABLET PEQUENO
+   ATÉ 768 PX
+========================================================= */
+
+@media (max-width: 768px) {
+
+    body {
+        font-size: 15px;
+    }
+
+
+    /* -------------------------
+       SIDEBAR
+    ------------------------- */
+
+    .sidebar {
+        position: fixed;
+
+        top: 0;
+        left: -290px;
+
+        width: 280px;
+        max-width: 85vw;
+
+        height: 100vh;
+
+        z-index: 1000;
+
+        overflow-y: auto;
+
+        transition: left 0.3s ease;
+    }
+
+    body.open .sidebar {
+        left: 0;
+    }
+
+    body.open .sidebar-overlay {
+        visibility: visible;
+        opacity: 1;
+    }
+
+
+    /* -------------------------
+       CONTEÚDO PRINCIPAL
+    ------------------------- */
+
+    main,
+    .main-content {
+        width: 100%;
+
+        margin-left: 0 !important;
+    }
+
+
+    /* -------------------------
+       BOTÃO DO MENU
+    ------------------------- */
+
+    .menu-toggle {
+        display: inline-flex;
+
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+    }
+
+
+    /* -------------------------
+       TOPBAR
+    ------------------------- */
+
+    .topbar {
+        gap: 10px;
+    }
+
+    .global-search {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .global-search input {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .user {
+        flex-shrink: 0;
+    }
+
+    .user #clock {
+        display: none;
+    }
+
+
+    /* -------------------------
+       CABEÇALHO
+    ------------------------- */
+
+    .page-head {
+        display: block;
+    }
+
+    .page-head > div:last-child {
+        margin-top: 15px;
+    }
+
+    .page-head h1 {
+        font-size: 24px;
+    }
+
+
+    /* -------------------------
+       PAINÉIS
+    ------------------------- */
+
+    .panel {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+
+    /* -------------------------
+       GRIDS
+    ------------------------- */
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+
+    /* -------------------------
+       BOTÕES
+    ------------------------- */
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .actions .btn {
+        width: 100%;
+
+        text-align: center;
+        justify-content: center;
+    }
+
+    .page-head > div:last-child .btn {
+        min-height: 44px;
+    }
+
+    .btn {
+        min-height: 44px;
+    }
+
+
+    /* -------------------------
+       PETIÇÕES
+    ------------------------- */
+
+    .texto-peticao {
+        padding: 20px;
+
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .editor-peticao {
+        min-height: 450px;
+    }
+
+
+    /* -------------------------
+       IA
+    ------------------------- */
+
+    .aviso-ia {
+        gap: 12px;
+        padding: 15px;
+    }
+
+
+    /* -------------------------
+       CONFIRMAÇÃO
+    ------------------------- */
+
+    .confirm-card {
+        margin: 30px auto;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+   ATÉ 576 PX
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .page-head h1 {
+        font-size: 21px;
+    }
+
+    .page-head p {
+        font-size: 14px;
+    }
+
+    .panel {
+        padding: 14px;
+    }
+
+
+    /* -------------------------
+       FORMULÁRIOS
+    ------------------------- */
+
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+
+
+    /* -------------------------
+       TOPBAR
+    ------------------------- */
+
+    .topbar {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .global-search input {
+        font-size: 14px;
+    }
+
+
+    /* -------------------------
+       CABEÇALHO E BOTÕES
+    ------------------------- */
+
+    .page-head > div:last-child {
+        width: 100%;
+    }
+
+    .page-head > div:last-child .btn {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+
+    /* -------------------------
+       TABELAS
+    ------------------------- */
+
+    .table-responsive table {
+        min-width: 650px;
+    }
+
+
+    /* -------------------------
+       UPLOAD
+    ------------------------- */
+
+    .upload-card input[type="file"] {
+        padding: 15px;
+    }
+
+    .drop-icon {
+        font-size: 45px;
+    }
+
+
+    /* -------------------------
+       PETIÇÃO
+    ------------------------- */
+
+    .texto-peticao {
+        padding: 15px;
+        font-size: 15px;
+    }
+
+
+    /* -------------------------
+       IA
+    ------------------------- */
+
+    .aviso-ia {
+        flex-direction: column;
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES MUITO PEQUENOS
+   ATÉ 400 PX
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .sidebar {
+        width: 260px;
+    }
+
+    .page-head h1 {
+        font-size: 20px;
+    }
+
+    .content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .panel {
+        padding: 12px;
+    }
+
+}
