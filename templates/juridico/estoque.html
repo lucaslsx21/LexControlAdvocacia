@@ -1,0 +1,43 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <h1>Controle de estoque</h1>
+        <p>Materiais e movimentações do escritório.</p>
+    </div>
+    <div><a class="btn" href="{% url 'movimentacao_nova' %}">Movimentar</a><a class="btn primary"
+            href="{% url 'material_novo' %}">Novo material</a></div>
+</div>
+<div class="toolbar"><span></span>
+    <div><a class="btn word" href="{% url 'exportar' 'estoque' 'word' %}">Word</a><a class="btn pdf"
+            href="{% url 'exportar' 'estoque' 'pdf' %}">PDF</a></div>
+</div>
+<div class="grid-2">
+    <div class="panel">
+        <h2>Materiais</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Categoria</th>
+                    <th>Quantidade</th>
+                    <th>Situação</th>
+                </tr>
+            </thead>
+            <tbody>{% for m in itens %}<tr>
+                    <td>{{ m.nome }}<small>{{ m.localizacao }}</small></td>
+                    <td>{{ m.categoria }}</td>
+                    <td><b>{{ m.quantidade }}</b> {{ m.unidade }}</td>
+                    <td>{% if m.estoque_baixo %}<span class="badge indeferido">Estoque baixo</span>{% else %}<span
+                            class="badge deferido">Normal</span>{% endif %}</td>
+                </tr>{% empty %}<tr>
+                    <td colspan="4">Nenhum material.</td>
+                </tr>{% endfor %}</tbody>
+        </table>
+    </div>
+    <div class="panel">
+        <h2>Últimas movimentações</h2>{% for m in movimentacoes %}<div class="deadline"><i
+                class="fa-solid fa-{% if m.tipo == 'ENTRADA' %}arrow-down green-text{% else %}arrow-up red-text{% endif %}"></i>
+            <div><b>{{ m.get_tipo_display }} de {{ m.quantidade }} — {{ m.material.nome }}</b><span>{{
+                    m.criado_em|date:'d/m/Y H:i' }} · {{ m.observacao }}</span></div>
+        </div>{% empty %}<p>Nenhuma movimentação.</p>{% endfor %}
+    </div>
+</div>{% endblock %}

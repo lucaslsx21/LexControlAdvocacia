@@ -1,0 +1,38 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <h1>Advogados</h1>
+        <p>Cadastro e contexto histórico dos profissionais.</p>
+    </div><a class="btn primary" href="{% url 'advogado_novo' %}"><i class="fa-solid fa-plus"></i>Novo advogado</a>
+</div>
+<div class="toolbar">
+    <form><input name="q" value="{{ q }}" placeholder="Nome, OAB ou especialidade"><button
+            class="btn">Pesquisar</button></form>
+    <div><a class="btn word" href="{% url 'exportar' 'advogados' 'word' %}">Word</a><a class="btn pdf"
+            href="{% url 'exportar' 'advogados' 'pdf' %}">PDF</a></div>
+</div>
+<div class="panel">
+    <table>
+        <thead>
+            <tr>
+                <th>Advogado</th>
+                <th>OAB</th>
+                <th>Especialidades</th>
+                <th>Admissão</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>{% for a in itens %}<tr>
+                <td><b>{{ a.nome }}</b><small>{{ a.email }}</small></td>
+                <td>{{ a.oab }}</td>
+                <td>{{ a.especialidades|default:'—' }}</td>
+                <td>{{ a.data_admissao|date:'d/m/Y' }}</td>
+                <td><a class="icon-btn" href="{% url 'advogado_detalhe' a.pk %}" title="Histórico"><i
+                            class="fa-solid fa-eye"></i></a><a class="icon-btn" href="{% url 'advogado_editar' a.pk %}"
+                        title="Editar"><i class="fa-solid fa-pen"></i></a><a class="icon-btn danger"
+                        href="{% url 'advogado_excluir' a.pk %}" title="Excluir"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>{% empty %}<tr>
+                <td colspan="5">Nenhum advogado encontrado.</td>
+            </tr>{% endfor %}</tbody>
+    </table>
+</div>{% endblock %}

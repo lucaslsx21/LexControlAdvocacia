@@ -1,0 +1,46 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <h1>Dashboard</h1>
+        <p>Visão geral do escritório em tempo real.</p>
+    </div>
+</div>
+<div class="cards">
+    <div class="metric"><i class="fa-solid fa-user-tie"></i>
+        <div><b>{{ advogados }}</b><span>Advogados ativos</span></div>
+    </div>
+    <div class="metric"><i class="fa-solid fa-folder-open"></i>
+        <div><b>{{ processos }}</b><span>Processos</span></div>
+    </div>
+    <div class="metric green"><i class="fa-solid fa-check"></i>
+        <div><b>{{ deferidos }}</b><span>Deferidos</span></div>
+    </div>
+    <div class="metric purple"><i class="fa-solid fa-flag-checkered"></i>
+        <div><b>{{ concluidos }}</b><span>Concluídos</span></div>
+    </div>
+</div>
+<div class="grid-2">
+    <div class="panel">
+        <h2>Processos recentes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Área</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>{% for p in recentes %}<tr>
+                    <td><a href="{% url 'processo_detalhe' p.pk %}">{{ p.numero }}</a></td>
+                    <td>{{ p.get_area_display }}</td>
+                    <td><span class="badge {{ p.status|lower }}">{{ p.get_status_display }}</span></td>
+                </tr>{% empty %}<tr>
+                    <td colspan="3">Nenhum processo cadastrado.</td>
+                </tr>{% endfor %}</tbody>
+        </table>
+    </div>
+    <div class="panel">
+        <h2>Próximos prazos</h2>{% for p in prazos %}<div class="deadline"><i class="fa-regular fa-calendar"></i>
+            <div><b>{{ p.numero }}</b><span>{{ p.prazo_atual|date:'d/m/Y H:i' }} — {{ p.titulo }}</span></div>
+        </div>{% empty %}<p>Nenhum prazo futuro cadastrado.</p>{% endfor %}
+    </div>
+</div>{% endblock %}

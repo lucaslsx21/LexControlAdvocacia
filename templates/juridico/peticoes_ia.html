@@ -1,0 +1,37 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <h1>Assistente de petições</h1>
+        <p>Minutas produzidas com IA e submetidas à revisão jurídica.</p>
+    </div>
+</div>
+<div class="toolbar">
+    <form><input name="q" value="{{ q }}" placeholder="Processo, advogado ou conteúdo"><button
+            class="btn">Pesquisar</button></form>
+</div>
+<div class="panel table-scroll">
+    <table>
+        <thead>
+            <tr>
+                <th>Processo</th>
+                <th>Tipo</th>
+                <th>Advogado</th>
+                <th>Status</th>
+                <th>Data e hora</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>{% for p in itens %}<tr>
+                <td><b>{{ p.processo.numero }}</b><small>{{ p.processo.titulo }}</small></td>
+                <td>{{ p.get_tipo_display }}</td>
+                <td>{{ p.advogado.nome }}<small>{{ p.advogado.oab }}</small></td>
+                <td><span class="badge">{{ p.get_status_display }}</span></td>
+                <td>{{ p.criado_em|date:'d/m/Y H:i' }}</td>
+                <td><a class="icon-btn" href="{% url 'peticao_ia_detalhe' p.pk %}"><i class="fa-solid fa-eye"></i></a><a
+                        class="icon-btn" href="{% url 'peticao_ia_revisar' p.pk %}"><i
+                            class="fa-solid fa-pen"></i></a><a class="icon-btn danger"
+                        href="{% url 'peticao_ia_excluir' p.pk %}"><i class="fa-solid fa-trash"></i></a></td>
+            </tr>{% empty %}<tr>
+                <td colspan="6">Nenhuma petição gerada. Abra um processo para começar.</td>
+            </tr>{% endfor %}</tbody>
+    </table>
+</div>{% endblock %}

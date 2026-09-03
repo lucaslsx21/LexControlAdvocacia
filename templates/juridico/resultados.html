@@ -1,0 +1,28 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <h1>Deferidos e concluídos</h1>
+        <p>Acompanhamento dos resultados separado por causa.</p>
+    </div>
+</div>{% for codigo,nome in areas %}<div class="panel section">
+    <h2>{{ nome }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Processo</th>
+                <th>Partes</th>
+                <th>Advogado</th>
+                <th>Status</th>
+                <th>Atualizado em</th>
+            </tr>
+        </thead>
+        <tbody>{% for p in itens %}{% if p.area == codigo %}<tr>
+                <td><a href="{% url 'processo_detalhe' p.pk %}">{{ p.numero }}</a></td>
+                <td>{{ p.parte_autora }} × {{ p.parte_re }}</td>
+                <td>{{ p.advogado.nome }}</td>
+                <td><span class="badge {{ p.status|lower }}">{{ p.get_status_display }}</span></td>
+                <td>{{ p.atualizado_em|date:'d/m/Y H:i' }}</td>
+            </tr>{% endif %}{% empty %}<tr>
+                <td colspan="5">Nenhum resultado.</td>
+            </tr>{% endfor %}</tbody>
+    </table>
+</div>{% endfor %}{% endblock %}

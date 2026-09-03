@@ -1,0 +1,20 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <h1>{{ peticao.get_tipo_display }}</h1>
+        <p>Processo {{ peticao.processo.numero }} · {{ peticao.criado_em|date:'d/m/Y H:i' }}</p>
+    </div>
+    <div><a class="btn" href="{% url 'peticao_ia_revisar' peticao.pk %}"><i class="fa-solid fa-pen"></i>Revisar e
+            editar</a><a class="btn word" href="{% url 'peticao_ia_word' peticao.pk %}">Word</a><a class="btn pdf"
+            href="{% url 'peticao_ia_pdf' peticao.pk %}">PDF</a></div>
+</div>
+<div class="aviso-ia"><i class="fa-solid fa-scale-balanced"></i>
+    <div><b>Minuta sujeita à revisão</b>
+        <p>Não utilize ou protocole sem validação de um advogado.</p>
+    </div>
+</div>
+<div class="panel">
+    <div class="dados-peticao"><span><b>Advogado:</b> {{ peticao.advogado.nome }}</span><span><b>OAB:</b> {{
+            peticao.advogado.oab }}</span><span><b>Status:</b> {{ peticao.get_status_display
+            }}</span><span><b>Modelo:</b> {{ peticao.modelo_utilizado }}</span></div>
+    <article class="texto-peticao">{{ peticao.texto_gerado|linebreaks }}</article>
+</div>{% endblock %}

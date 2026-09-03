@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-head">
+    <div>
+        <h1>Processos</h1>
+        <p>Organizados por causa, advogado e andamento.</p>
+    </div>
+
+    <div>
+        <a class="btn import" href="{% url 'processo_importar' %}">
+            <i class="fa-solid fa-file-arrow-up"></i>
+            Anexar e importar
+        </a>
+
+        <a class="btn primary" href="{% url 'processo_novo' %}">
+            <i class="fa-solid fa-plus"></i>
+            Novo processo
+        </a>
+    </div>
+</div>
+
+<div class="toolbar stacked">
+
+    <form method="get">
+
+        <input name="q" value="{{ q }}" placeholder="Número, partes, advogado ou conteúdo">
+
+        <select name="area">
+            <option value="">Todas as causas</option>
+
+            {% for v, n in areas %}
+            <option value="{{ v }}" {% if area == v %}selected{% endif %}>
+                {{ n }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <select name="status">
+            <option value="">Todos os status</option>
+
+            {% for v, n in status_opcoes %}
+            <option value="{{ v }}" {% if status == v %}selected{% endif %}>
+                {{ n }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <button class="btn" type="submit">
+            Filtrar
+        </button>
+
+    </form>
+
+    <div>
+        <a class="btn word" href="{% url 'exportar' 'processos' 'word' %}">
+            Word
+        </a>
+
+        <a class="btn pdf" href="{% url 'exportar' 'processos' 'pdf' %}">
+            PDF
+        </a>
+    </div>
+
+</div>
+
+<div class="panel table-scroll">
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Causa</th>
+                <th>Partes</th>
+                <th>Advogado</th>
+                <th>Status</th>
+                <th>Atualização</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for p in itens %}
+
+            <tr>
+
+                <td>
+                    <b>{{ p.numero }}</b>
+                    <small>{{ p.titulo }}</small>
+                </td>
+
+                <td>
+                    {{ p.get_area_display }}
+                </td>
+
+                <td>
+                    {{ p.parte_autora }}
+                    <small>× {{ p.parte_re }}</small>
+                </td>
+
+                <td>
+                    {{ p.advogado.nome }}
+                </td>
+
+                <td>
+                    <span class="badge {{ p.status|lower }}">
+                        {{ p.get_status_display }}
+                    </span>
+                </td>
+
+                <td>
+                    {{ p.atualizado_em|date:'d/m/Y H:i' }}
+                </td>
+
+                <td>
+
+                    <a class="icon-btn" href="{% url 'processo_detalhe' p.pk %}" title="Visualizar">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+
+                    <a class="icon-btn" href="{% url 'processo_editar' p.pk %}" title="Editar">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+
+                    <a class="icon-btn danger" href="{% url 'processo_excluir' p.pk %}" title="Excluir">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="7">
+                    Nenhum processo encontrado.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

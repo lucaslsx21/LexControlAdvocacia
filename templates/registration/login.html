@@ -1,0 +1,21 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Acesso — LexControl</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body class="login-page">
+    <div class="login-card">
+        <div class="login-logo">⚖</div>
+        <h1>LexControl</h1>
+        <p>Gestão jurídica integrada</p>
+        <form method="post">{% csrf_token %}{{ form.as_p }}<button class="btn primary full">Entrar</button></form>
+    </div>
+</body>
+
+</html>

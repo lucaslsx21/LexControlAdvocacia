@@ -1,0 +1,28 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <h1>Pesquisa geral</h1>
+        <p>Resultados para “{{ q }}” em todo o banco de dados.</p>
+    </div>
+</div>
+<div class="search-results">
+    <div class="panel">
+        <h2>Processos ({{ processos|length }})</h2>{% for x in processos %}<a
+            href="{% url 'processo_detalhe' x.pk %}"><b>{{ x.numero }} — {{ x.titulo }}</b><span>{{ x.parte_autora }} ×
+                {{ x.parte_re }} · {{ x.get_area_display }}</span></a>{% empty %}<p>Nenhum resultado.</p>{% endfor %}
+    </div>
+    <div class="panel">
+        <h2>Advogados ({{ advogados|length }})</h2>{% for x in advogados %}<a
+            href="{% url 'advogado_detalhe' x.pk %}"><b>{{ x.nome }}</b><span>{{ x.oab }} · {{ x.especialidades
+                }}</span></a>{% empty %}<p>Nenhum resultado.</p>{% endfor %}
+    </div>
+    <div class="panel">
+        <h2>Materiais ({{ materiais|length }})</h2>{% for x in materiais %}<a href="{% url 'estoque' %}"><b>{{ x.nome
+                }}</b><span>{{ x.categoria }} · {{ x.quantidade }} {{ x.unidade }}</span></a>{% empty %}<p>Nenhum
+            resultado.</p>{% endfor %}
+    </div>
+    <div class="panel">
+        <h2>Andamentos ({{ andamentos|length }})</h2>{% for x in andamentos %}<a
+            href="{% url 'processo_detalhe' x.processo.pk %}"><b>{{ x.processo.numero }}</b><span>{{
+                x.descricao|truncatechars:100 }}</span></a>{% empty %}<p>Nenhum resultado.</p>{% endfor %}
+    </div>
+</div>{% endblock %}

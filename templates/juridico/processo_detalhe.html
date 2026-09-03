@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-head">
+
+  <div>
+    <h1>{{ item.numero }}</h1>
+    <p>{{ item.titulo }}</p>
+  </div>
+
+  <div>
+
+    <a
+      class="btn ia"
+      href="{% url 'peticao_ia_nova' item.pk %}"
+    >
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      Criar petição com IA
+    </a>
+
+    <a
+      class="btn"
+      href="{% url 'andamento_novo' %}"
+    >
+      <i class="fa-solid fa-plus"></i>
+      Novo andamento
+    </a>
+
+    <a
+      class="btn danger-btn"
+      href="{% url 'processo_excluir' item.pk %}"
+    >
+      Excluir
+    </a>
+
+  </div>
+
+</div>
+
+
+<div class="grid-2">
+
+  <!-- ===================================================== -->
+  <!-- DADOS DO PROCESSO -->
+  <!-- ===================================================== -->
+
+  <div class="panel profile">
+
+    <span class="badge {{ item.status|lower }}">
+      {{ item.get_status_display }}
+    </span>
+
+
+    <h3>Causa</h3>
+
+    <p>
+      {{ item.get_area_display }}
+    </p>
+
+
+    <h3>Partes</h3>
+
+    <p>
+      {{ item.parte_autora }}
+      ×
+      {{ item.parte_re }}
+    </p>
+
+
+    <h3>Advogado responsável</h3>
+
+    <p>
+      {{ item.advogado.nome }}
+      —
+      {{ item.advogado.oab }}
+    </p>
+
+
+    <h3>Tribunal / Comarca</h3>
+
+    <p>
+      {{ item.tribunal|default:'—' }}
+      /
+      {{ item.comarca|default:'—' }}
+    </p>
+
+
+    <h3>Documentos anexados</h3>
+
+    {% for d in item.documentos.all %}
+
+      <p>
+
+        {% if d.arquivo %}
+
+          <a
+            href="{{ d.arquivo.url }}"
+            target="_blank"
+          >
+            <i class="fa-solid fa-paperclip"></i>
+            {{ d.nome_original }}
+          </a>
+
+        {% else %}
+
+          {{ d.nome_original }}
+
+        {% endif %}
+
+        <br>
+
+        <small>
+          Enviado em
+          {{ d.criado_em|date:'d/m/Y H:i' }}
+        </small>
+
+      </p>
+
+    {% empty %}
+
+      <p>—</p>
+
+    {% endfor %}
+
+
+    <h3>Descrição</h3>
+
+    <div>
+      {% if item.descricao %}
+        {{ item.descricao|linebreaks }}
+      {% else %}
+        <p>—</p>
+      {% endif %}
+    </div>
+
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- ANDAMENTOS -->
+  <!-- ===================================================== -->
+
+  <div class="panel">
+
+    <h2>Andamentos</h2>
+
+    <div class="timeline">
+
+      {% for a in item.andamentos.all %}
+
+        <div>
+
+          <time>
+            {{ a.data|date:'d/m/Y H:i' }}
+          </time>
+
+
+          <h3>
+            {{ a.responsavel|default:'Andamento processual' }}
+          </h3>
+
+
+          <p>
+            {{ a.descricao }}
+          </p>
+
+
+          <!-- ============================================= -->
+          <!-- STATUS REGISTRADO NO ANDAMENTO -->
+          <!-- ============================================= -->
+
+          {% if a.status_processo %}
+
+            <p>
+              <strong>Status do processo:</strong>
+
+              <span class="badge {{ a.status_processo|lower }}">
+                {{ a.get_status_processo_display }}
+              </span>
+            </p>
+
+          {% endif %}
+
+        </div>
+
+      {% empty %}
+
+        <p>
+          Nenhum andamento registrado.
+        </p>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

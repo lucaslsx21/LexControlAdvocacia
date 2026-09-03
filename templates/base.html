@@ -1,0 +1,49 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}LexControl{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/extra.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="brand"><i class="fa-solid fa-scale-balanced"></i><span>LexControl</span></div>
+        <nav>
+            <a class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}"
+                href="{% url 'dashboard' %}"><i class="fa-solid fa-house"></i>Dashboard</a>
+            <a class="{% if 'advogado' in request.resolver_match.url_name %}active{% endif %}"
+                href="{% url 'advogados' %}"><i class="fa-solid fa-user-tie"></i>Advogados</a>
+            <a class="{% if 'processo' in request.resolver_match.url_name %}active{% endif %}"
+                href="{% url 'processos' %}"><i class="fa-solid fa-folder-open"></i>Processos</a>
+            <a class="{% if 'peticao_ia' in request.resolver_match.url_name or request.resolver_match.url_name == 'peticoes_ia' %}active{% endif %}"
+                href="{% url 'peticoes_ia' %}"><i class="fa-solid fa-wand-magic-sparkles"></i>Assistente de petições</a>
+            <a class="{% if request.resolver_match.url_name == 'resultados' %}active{% endif %}"
+                href="{% url 'resultados' %}"><i class="fa-solid fa-gavel"></i>Deferidos e concluídos</a>
+            <a class="{% if 'estoque' in request.resolver_match.url_name or 'material' in request.resolver_match.url_name or 'movimentacao' in request.resolver_match.url_name %}active{% endif %}"
+                href="{% url 'estoque' %}"><i class="fa-solid fa-boxes-stacked"></i>Estoque</a>
+        </nav>
+    </aside>
+    <main>
+        <header class="topbar"><button class="menu" onclick="document.body.classList.toggle('open')"><i
+                    class="fa-solid fa-bars"></i></button>
+            <form action="{% url 'busca_global' %}" class="global-search"><i
+                    class="fa-solid fa-magnifying-glass"></i><input name="q" value="{{ request.GET.q }}"
+                    placeholder="Pesquisar em todo o banco de dados..."></form>
+            <div class="user"><i class="fa-regular fa-clock"></i><span id="clock"></span>
+                <form method="post" action="{% url 'logout' %}">{% csrf_token %}<button title="Sair"><i
+                            class="fa-solid fa-right-from-bracket"></i></button></form>
+            </div>
+        </header>
+        <section class="content">{% if messages %}{% for message in messages %}<div class="alert">{{ message }}</div>
+            {% endfor %}{% endif %}{% block content %}{% endblock %}</section>
+    </main>
+    <script>function tick() { document.getElementById('clock').textContent = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short', timeStyle: 'medium' }).format(new Date()) } tick(); setInterval(tick, 1000)</script>
+</body>
+
+</html>

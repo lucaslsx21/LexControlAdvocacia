@@ -1,0 +1,47 @@
+{% extends 'base.html' %}{% block content %}
+<div class="page-head">
+  <div>
+    <h1>Anexar e importar processo</h1>
+    <p>O documento será lido e o cadastro será preenchido automaticamente.</p>
+  </div>
+</div>
+<div class="grid-2 import-grid">
+  <form method="post" enctype="multipart/form-data" class="panel upload-card">
+    {% csrf_token %}
+    <div class="drop-icon">
+      <i class="fa-solid fa-cloud-arrow-up"></i>
+    </div>
+    {% for field in form %}
+    <div class="field">
+      <label>{{ field.label }}</label>{{ field }}{% if field.help_text %}<small
+        >{{ field.help_text }}</small
+      >{% endif %}{% for error in field.errors %}<small class="error"
+        >{{ error }}</small
+      >{% endfor %}
+    </div>
+    {% endfor %}
+    <div class="actions">
+      <a class="btn" href="{% url 'processos' %}">Cancelar</a
+      ><button class="btn import">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>Importar automaticamente
+      </button>
+    </div>
+  </form>
+  <div class="panel">
+    <h2>Dados procurados no documento</h2>
+    <ul class="check-list">
+      <li>Número do processo</li>
+      <li>Classe, assunto e área jurídica</li>
+      <li>Parte autora e parte ré</li>
+      <li>Advogado pelo nome ou OAB</li>
+      <li>Tribunal e comarca</li>
+      <li>Status e datas</li>
+      <li>Valor da causa e prazo</li>
+    </ul>
+    <p>
+      <b>Importante:</b> PDFs provenientes somente de escaneamento não possuem
+      texto pesquisável e exigem OCR.
+    </p>
+  </div>
+</div>
+{% endblock %}

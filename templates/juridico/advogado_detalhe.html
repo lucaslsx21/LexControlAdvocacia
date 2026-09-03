@@ -1,0 +1,23 @@
+{% extends 'base.html' %}{% block content %}<div class="page-head">
+    <div>
+        <h1>{{ item.nome }}</h1>
+        <p>{{ item.oab }} · {{ item.email }}</p>
+    </div><a class="btn primary" href="{% url 'historico_novo' %}">Adicionar histórico</a>
+</div>
+<div class="grid-2">
+    <div class="panel profile">
+        <h2>Contexto profissional</h2>
+        <p>{{ item.resumo_profissional|linebreaks }}</p>
+        <h3>Formação</h3>
+        <p>{{ item.formacao|linebreaks|default:'Não informada.' }}</p>
+        <h3>Especialidades</h3>
+        <p>{{ item.especialidades|default:'Não informadas.' }}</p>
+    </div>
+    <div class="panel">
+        <h2>Linha do tempo</h2>
+        <div class="timeline">{% for h in item.historicos.all %}<div><time>{{ h.data_evento|date:'d/m/Y H:i' }}</time>
+                <h3>{{ h.titulo }}</h3>
+                <p>{{ h.descricao }}</p>
+            </div>{% empty %}<p>Nenhum evento histórico.</p>{% endfor %}</div>
+    </div>
+</div>{% endblock %}
