@@ -749,5 +749,117 @@ table {
     .panel {
         padding: 12px;
     }
+/* =========================================================
+   LOGIN
+========================================================= */
 
+.login-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: #edf6ff;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 40px;
+
+    background: #ffffff;
+
+    border: 1px solid #dce5ef;
+    border-radius: 16px;
+
+    box-shadow: 0 15px 40px rgba(0, 40, 90, 0.12);
+}
+
+.login-brand {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.login-brand i {
+    font-size: 45px;
+
+    color: #c39a35;
+
+    margin-bottom: 10px;
+}
+
+.login-brand h1 {
+    margin: 5px 0;
+
+    color: #07366b;
+
+    font-size: 32px;
+}
+
+.login-brand p {
+    margin: 0;
+
+    color: #64748b;
+}
+
+.login-card .field {
+    margin-bottom: 18px;
+}
+
+.login-card label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: 600;
+
+    color: #26384d;
+}
+
+.login-card .form-control {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #ccd6e2;
+    border-radius: 8px;
+
+    font-size: 16px;
+}
+
+.login-btn {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 10px;
+
+    background: #1769e8;
+    color: #ffffff;
+
+    border-color: #1769e8;
+}
+
+.alert-login {
+    padding: 12px;
+
+    margin-bottom: 20px;
+
+    background: #ffe7ea;
+    color: #b4233a;
+
+    border: 1px solid #ffc5cc;
+    border-radius: 8px;
+
+    text-align: center;
+}
 }

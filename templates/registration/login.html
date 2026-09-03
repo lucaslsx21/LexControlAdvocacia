@@ -1,21 +1,130 @@
 {% load static %}
+
 <!doctype html>
 <html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Acesso — LexControl</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Login | LexControl</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/style.css' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/extra.css' %}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 </head>
 
-<body class="login-page">
-    <div class="login-card">
-        <div class="login-logo">⚖</div>
-        <h1>LexControl</h1>
-        <p>Gestão jurídica integrada</p>
-        <form method="post">{% csrf_token %}{{ form.as_p }}<button class="btn primary full">Entrar</button></form>
+<body>
+
+    <div class="login-page">
+
+        <div class="login-card">
+
+            <div class="login-brand">
+
+                <i class="fa-solid fa-scale-balanced"></i>
+
+                <h1>LexControl</h1>
+
+                <p>
+                    Plataforma de Gestão Jurídica
+                </p>
+
+            </div>
+
+
+            {% if form.errors %}
+
+                <div class="alert-login">
+                    Usuário ou senha inválidos.
+                </div>
+
+            {% endif %}
+
+
+            <form method="post">
+
+                {% csrf_token %}
+
+
+                <div class="field">
+
+                    <label for="id_username">
+                        Usuário
+                    </label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        id="id_username"
+                        class="form-control"
+                        required
+                        autofocus
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="id_password">
+                        Senha
+                    </label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        id="id_password"
+                        class="form-control"
+                        required
+                    >
+
+                </div>
+
+
+                {% if next %}
+
+                    <input
+                        type="hidden"
+                        name="next"
+                        value="{{ next }}"
+                    >
+
+                {% endif %}
+
+
+                <button
+                    type="submit"
+                    class="btn login-btn"
+                >
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Entrar
+
+                </button>
+
+            </form>
+
+        </div>
+
     </div>
+
 </body>
 
 </html>

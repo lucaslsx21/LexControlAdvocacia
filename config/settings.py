@@ -141,11 +141,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MAX_PROCESS_UPLOAD_SIZE = 50 * 1024 * 1024
 
-LOGIN_URL = "login"
+LOGIN_URL = "/login/"
 
-LOGIN_REDIRECT_URL = "dashboard"
+LOGIN_REDIRECT_URL = "/"
 
-LOGOUT_REDIRECT_URL = "login"
+LOGOUT_REDIRECT_URL = "/login/"
 
 
 OPENAI_API_KEY = os.getenv(
